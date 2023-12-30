@@ -1,0 +1,32 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Shared Dependencies
+app = { path = "../app", default-features = false, features = ["ssr"] }
+leptos = { workspace = true, features = ["ssr"] }
+leptos_axum.workspace = true
+simple_logger.workspace = true
+tokio.workspace = true
+log.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+# Crate specific Dependencies
+async-trait = "0.1"
+axum = "0.6.20"
+tower = { version = "0.4.13", features = ["full"] }
+tower-http = { version = "0.4", features = ["full"] }
+sqlx = { version = "0.7", features = [
+    "json",
+    "postgres",
+    "runtime-tokio-rustls",
+    "uuid",
+    "time",
+    "migrate",
+    "macros",
+] }
